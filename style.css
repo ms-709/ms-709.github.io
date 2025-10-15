@@ -1,12 +1,31 @@
 @font-face {
-    font-family: Ubuntu;
-    src: url(assets/fonts/Ubuntu/Ubuntu-MediumItalic.ttf);
+    font-family: 'Ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-body {
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+body 
+{
     font-family: Ubuntu;
     background-color: #fdfbf5;
-    text-align: center;
+    /* text-align: center; */
+
+    /* alignment */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+    padding-top: 90px;
 }
 
 /* vignette over everything */
@@ -20,7 +39,8 @@ body {
 } */
 
 /* vignette over body */
-body::before {
+body::before 
+{
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -29,10 +49,151 @@ body::before {
     background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
 }
 
+/*----------------------------------------// MAIN CONTENT //----------------------------------------*/
+
+.title-panel
+{
+    position: relative;
+    height: 130px;
+    max-width: 1000px;
+    padding: 0 40px;
+    background-color: #51504F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 20px black;
+
+    /* to offset accent-footer and keep elements centered */
+    padding-bottom: 15px;
+}
+
+/* title panel's gradient */
+.title-panel::before 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
+}
+
+.main-panel
+{
+    position: relative;
+    height: 350px;
+    width: 680px;
+    background-color: #51504F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 20px black;
+
+    /* to offset accent-footer and keep elements centered*/
+    padding-bottom: 15px;
+}
+
+.main-panel::before 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
+}
+
+.panel-label
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: 0 20px;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #3c3a38;
+}
+
+/* the little dark bar at the bottom of elements */
+.accent-footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+
+    background: #3c3a38;
+
+    /* margin-top: 15px; */ /* this might be a leftover? i forgot */
+}
+
+
+/* for making horizontally organized objects */
+/* .row-flexbox 
+{
+
+} */
+
+/*----------------------------------------// TEXT //----------------------------------------*/
+
+/* for use in title-panel, large white text */
+h1
+{
+    color: #dfdbd5;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 65px;
+
+    z-index: 1;
+}
+
+/* for use in panel-labels, larger white text */
+h2
+{
+    color: #dfdbd5;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 40px;
+
+    z-index: 1;
+}
+
+.panel-label > h2
+{
+    margin-left: -8px; /* compensates for the italics, making the text appear more centered */
+}
+
+p
+{
+    color: #dfdbd5;
+    font-weight: regular;
+    font-size: 40px;
+
+    text-align: center;
+    max-width: 650px;
+
+    z-index: 1;
+}
+
+.main-panel > p
+{
+    margin-top: 75px; /* compensates for height added by panel-title */
+}
+
 /*----------------------------------------// SIDEBARS //----------------------------------------*/
 
 /* sidebar for navigating from page to page, collapses when not hovered */
-.sidebar {
+.sidebar 
+{
     position: fixed;
     left: 0;
     top: 0;
@@ -49,7 +210,8 @@ body::before {
 }
 
 /* adds the little handle on the sidebar, to indicate interaction */
-.sidebar::before {
+.sidebar::before 
+{
     content: "";
     position: absolute;
     top: 50%;
@@ -68,13 +230,15 @@ body::before {
 }
 
 /* hide handle when hovered on */
-.sidebar:hover::before {
+.sidebar:hover::before 
+{
     background: rgba(0, 0, 0, 0);
     /* box-shadow: 0px 0px 0px black; */
 }
 
 /* vignette effect on the sidebar and it's contents */
-.sidebar::after {
+.sidebar::after 
+{
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -83,8 +247,9 @@ body::before {
 }
 
 /* decorative right bar w/ no functionality */
-.rightbar {
-    position: absolute;
+.rightbar 
+{
+    position: fixed;
     right: 0;
     top: 0;
     height: 100%;
@@ -95,7 +260,8 @@ body::before {
 }
 
 /* vignette effect on the rightbar */
-.rightbar::after {
+.rightbar::after 
+{
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -105,23 +271,27 @@ body::before {
 }
 
 /* updates width to full on hover */
-.sidebar:hover {
+.sidebar:hover 
+{
     width: 200px;
 }
 
 /* slides sidebar content onto screen while restoring opacity on hover */
-.sidebar:hover .sidebar-content {
+.sidebar:hover .sidebar-content 
+{
     transform: translateX(0);
     opacity: 1;
 }
 
 /* adds a darker section to the top of the sidebar, also containing a title */
-.sidebar-title {
+.sidebar-title 
+{
     width: 100%;
     height: 65px;
 
     background: #3c3a38;
     color: #dfdbd5;
+    font-style: italic;
     box-shadow: 0px 0px 20px black;
 
     display: flex;
@@ -129,7 +299,8 @@ body::before {
 }
 
 /* everything within sidebar, for controlling hover movement */
-.sidebar-content {
+.sidebar-content 
+{
     transition: 
         transform 0.3s, 
         opacity 0.2s;
@@ -140,7 +311,8 @@ body::before {
 }
 
 /* <a>'s within sidebar-content */
-.sidebar-content > a {
+.sidebar-content > a 
+{
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -150,6 +322,7 @@ body::before {
 
     text-decoration: none;
     color: #dfdbd5;
+    font-style: italic;
 
     transform: translateX(-40px);
     opacity: 0;
@@ -160,27 +333,23 @@ body::before {
 }
 
 /* when <a> is hovered over, changes colors */
-.sidebar-content > a:hover {
+.sidebar-content > a:hover 
+{
     background-color: #dfdbd5;
     color: #51504f;
     box-shadow: 0px 0px 20px black;
 }
 
 /* returns <a>'s in sidebar content back to original position/opacity */
-.sidebar:hover .sidebar-content > a {
+.sidebar:hover .sidebar-content > a 
+{
     transform: translateX(0);
     opacity: 1;
 }
 
-/* offsets each <a>'s entry on hover to create a cascading effect */
-.sidebar:hover .sidebar-content > a:nth-of-type(1) { transition-delay: 0.1s; }
-.sidebar:hover .sidebar-content > a:nth-of-type(2) { transition-delay: 0.2s; }
-.sidebar:hover .sidebar-content > a:nth-of-type(3) { transition-delay: 0.3s; }
-.sidebar:hover .sidebar-content > a:nth-of-type(4) { transition-delay: 0.4s; }
-.sidebar:hover .sidebar-content > a:nth-of-type(5) { transition-delay: 0.5s; }
-
 /* text at the very top of sidebar, within the darker grey */
-.sidebar-title a {
+.sidebar-title a 
+{
     margin-top: 10px;
     font-size: 0.9em;
     padding-top: 5px;
