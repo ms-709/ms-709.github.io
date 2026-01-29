@@ -298,11 +298,11 @@ p
 }
 
 /* changes link colors */
-.title-panel a
+.hyperlink
 {
     color: tan;
 }
-.title-panel a:visited
+.hyperlink:visited
 {
     color: rgb(140, 118, 87);
 }
