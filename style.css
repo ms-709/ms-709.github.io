@@ -1,0 +1,495 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+body 
+{
+    font-family: Ubuntu;
+    background-color: #fdfbf5;
+    /* text-align: center; */
+
+    /* alignment */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+    padding-top: 70px;
+}
+
+/* vignette over everything */
+ /* body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 500;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.4) 100%);
+}  */
+
+/* vignette over body */
+body::before 
+{
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
+}
+
+/*----------------------------------------// MAIN CONTENT PANELS //----------------------------------------*/
+
+.title-panel
+{
+    position: relative;
+    height: 130px;
+    max-width: 1000px;
+    padding: 0 40px;
+    background-color: #51504F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 20px black;
+
+    /* to offset accent-footer and keep elements centered */
+    padding-bottom: 15px;
+}
+
+/* title panel's vignette */
+.title-panel::before 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
+}
+
+.main-panel
+{
+    position: relative;
+    
+    min-height: 310px;
+    /* width: 680px; */
+    background-color: #51504F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 20px black;
+
+    padding-top: 10px;
+    padding-bottom: 45px; /* to offset accent-footer and keep elements centered*/
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* main-panel vignette */
+.main-panel::before 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
+}
+
+/* Remove vignette from main-panels inside image-text-panel-flexbox */
+.image-text-panel-flexbox > .main-panel::before {
+    display: none;
+    content: none;
+}
+
+/* for displaying images of a 1:1 aspect ratio*/
+.image-panel
+{
+    position: relative;
+    min-height: unset;
+    height: 270px;
+    width: auto;
+    min-width: unset;
+    background-color: #51504F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 20px black;    
+    
+    padding: 40px;
+    padding-bottom: 55px; /* to offset accent-footer and keep elements centered*/
+}
+
+/* image-panel vignette */
+.image-panel::before 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
+}
+
+.panel-label
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: 0 20px;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #3c3a38;
+}
+
+/* the little dark bar at the bottom of elements */
+.accent-footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+
+    background: #3c3a38;
+
+    /* margin-top: 15px; */ /* this might be a leftover? i forgot */
+}
+
+/* for making horizontally organized objects */
+.row-flexbox 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 70px;
+} 
+
+/* for making vertically organized objects */
+.column-flexbox
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 70px;
+}
+
+/* flexbox that contains both a main panel and image panel merged into one */
+.image-text-panel-flexbox
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0px;
+
+    box-shadow: 0px 0px 20px black;  
+}
+
+/* vignette for main image panel combo */
+.image-text-panel-flexbox::before 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.4) 100%);
+}
+
+/* adapts box shadows so combo looks cohesive */
+.image-text-panel-flexbox > .main-panel
+{
+    box-shadow: 0px 0px;
+
+    padding-top: 10px;
+    padding-bottom: 45px;
+}
+
+/* see above */
+.image-text-panel-flexbox > .image-panel
+{
+    box-shadow: 0px 0px;
+}
+
+/* no vignette on main-panels in image-text... */
+.image-text-panel-flexbox > .main-panel::before 
+{
+    display: none;
+    content: none;
+}
+
+/* see above */
+.image-text-panel-flexbox > .image-panel::before 
+{
+    display: none;
+    content: none;
+}
+
+/*----------------------------------------// TEXT //----------------------------------------*/
+
+/* for use in title-panel, large white text */
+h1
+{
+    color: #dfdbd5;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 65px;
+
+    z-index: 1;
+
+    margin-left: -8px; /* compensates for the italics, making the text appear more centered */
+}
+
+/* for use in panel-labels, larger white text */
+h2
+{
+    color: #dfdbd5;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 40px;
+
+    z-index: 1;
+
+    margin-left: -6px; /* compensates for the italics, making the text appear more centered */
+}
+
+p
+{
+    color: #dfdbd5;
+    font-weight: regular;
+    font-size: 40px;
+
+    text-align: center;
+    max-width: 650px;
+
+    z-index: 1;
+}
+
+.main-panel > p
+{
+    margin-top: 75px; /* compensates for height added by panel-title */
+    font-size: 30px;
+}
+
+/* changes link colors */
+.title-panel a
+{
+    color: tan;
+}
+.title-panel a:visited
+{
+    color: rgb(140, 118, 87);
+}
+
+/*----------------------------------------// MEDIA //----------------------------------------*/
+
+.image-panel > img
+{
+    height: 100%;
+    width: auto; 
+    object-fit: contain;
+
+    box-shadow: 0px 0px 20px black;
+}
+
+.pdf-viewer object
+{
+    box-shadow: 0px 0px 20px black;
+}
+
+/*----------------------------------------// SIDEBARS //----------------------------------------*/
+
+/* sidebar for navigating from page to page, collapses when not hovered */
+.sidebar 
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    overflow: hidden;
+
+    background: #51504F;
+    color: #dfdbd5;
+    box-shadow: 0px 0px 20px black;
+    font-size: 35px;
+
+    transition: width 0.3s;
+
+    z-index: 1;
+}
+
+/* adds the little handle on the sidebar, to indicate interaction */
+.sidebar::before 
+{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 45px;
+
+    background: #dfdbd5;
+    border-radius: 4px 4px 4px 4px;
+    /* box-shadow: 0px 0px 10px black; */
+
+    pointer-events: none; 
+
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* hide handle when hovered on */
+.sidebar:hover::before 
+{
+    background: rgba(0, 0, 0, 0);
+    /* box-shadow: 0px 0px 0px black; */
+}
+
+/* vignette effect on the sidebar and it's contents */
+.sidebar::after 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 100%);
+}
+
+/* decorative right bar w/ no functionality */
+.rightbar 
+{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+
+    background: #51504F;
+    box-shadow: 0px 0px 20px black;
+
+    z-index: 1;
+}
+
+/* vignette effect on the rightbar */
+.rightbar::after 
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 2;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 100%);
+}
+
+/* updates width to full on hover */
+.sidebar:hover 
+{
+    width: 200px;
+}
+
+/* slides sidebar content onto screen while restoring opacity on hover */
+.sidebar:hover .sidebar-content 
+{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* adds a darker section to the top of the sidebar, also containing a title */
+.sidebar-title 
+{
+    width: 100%;
+    height: 65px;
+
+    background: #3c3a38;
+    color: #dfdbd5;
+    font-style: italic;
+    box-shadow: 0px 0px 20px black;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* everything within sidebar, for controlling hover movement */
+.sidebar-content 
+{
+    transition: 
+        transform 0.3s, 
+        opacity 0.2s;
+
+    transform: translateX(-100%);
+    text-align: left;
+    opacity: 0;
+}
+
+/* <a>'s within sidebar-content */
+.sidebar-content > a 
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    text-decoration: none;
+    color: #dfdbd5;
+    font-style: italic;
+
+    transform: translateX(-40px);
+    opacity: 0;
+    transition: 
+        background-color 0.3s,
+        color 0.3s,
+        box-shadow 0.3s;
+}
+
+/* when <a> is hovered over, changes colors */
+.sidebar-content > a:hover 
+{
+    background-color: #dfdbd5;
+    color: #51504f;
+    box-shadow: 0px 0px 20px black;
+}
+
+/* returns <a>'s in sidebar content back to original position/opacity */
+.sidebar:hover .sidebar-content > a 
+{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* text at the very top of sidebar, within the darker grey */
+.sidebar-title a 
+{
+    margin-top: 10px;
+    font-size: 0.9em;
+    padding-top: 5px;
+}
+
